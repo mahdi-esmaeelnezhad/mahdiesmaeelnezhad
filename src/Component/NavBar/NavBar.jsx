@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { HiDownload, HiSun, HiMoon } from 'react-icons/hi';
 import { IoGameController } from 'react-icons/io5';
 import { useTheme } from '../../context/ThemeContext';
-import cvFile from '../../asset/pdf/Mahdi-Esmaeelnezhad.cv (1).pdf';
+import cvFile from '../../asset/pdf/Mahdi-Esmaeelnezhad-CV.pdf';
 import DinoGame from '../Game/DinoGame';
 
 const navigation = [
