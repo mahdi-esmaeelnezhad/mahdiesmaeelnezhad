@@ -3,7 +3,7 @@ import personalImg from '../../asset/img/personalImg.jpeg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail, HiArrowDown } from 'react-icons/hi';
 
-const ROLES = ['Frontend Developer', 'React Specialist', 'Vue.js Expert', 'Team Lead'];
+const ROLES = ['Full-stack Developer', 'React & Next.js', 'Node.js & Python', 'Team Lead'];
 
 function FirstShow() {
     const [isVisible, setIsVisible] = useState(false);
@@ -71,9 +71,9 @@ function FirstShow() {
                         </div>
 
                         <p className="text-theme-secondary text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-10 leading-relaxed px-2 sm:px-0">
-                            A passionate <span className="text-primary-500 font-medium">Frontend Developer</span> with 
-                            over 5 years of experience crafting beautiful, performant web applications. 
-                            Specialized in <span className="text-accent-cyan">React</span> & <span className="text-accent-purple">Vue.js</span> ecosystems.
+                            A passionate <span className="text-primary-500 font-medium">Full-stack Developer</span> with 
+                            over 8 years of experience building performant web and mobile applications. 
+                            Skilled across <span className="text-accent-cyan">React, Next.js, Vue</span> & <span className="text-accent-purple">Node.js, Python, Go</span>.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
@@ -85,7 +85,7 @@ function FirstShow() {
                                 Get In Touch
                             </a>
                             <a 
-                                href="#experience" 
+                                href="#projects" 
                                 className="btn-outline flex items-center justify-center gap-2"
                             >
                                 View My Work
@@ -135,12 +135,12 @@ function FirstShow() {
                                 <span className="text-xs sm:text-sm text-theme-secondary ml-1 sm:ml-2">React</span>
                             </div>
                             <div className="hidden sm:block absolute top-6 sm:top-10 -right-2 sm:-right-4 px-3 py-1.5 sm:px-4 sm:py-2 glass rounded-xl animate-float" style={{animationDelay: '1s'}}>
-                                <span className="text-xl sm:text-2xl">💚</span>
-                                <span className="text-xs sm:text-sm text-theme-secondary ml-1 sm:ml-2">Vue.js</span>
+                                <span className="text-xl sm:text-2xl">🟢</span>
+                                <span className="text-xs sm:text-sm text-theme-secondary ml-1 sm:ml-2">Node.js</span>
                             </div>
                             <div className="hidden md:block absolute -top-4 left-10 px-4 py-2 glass rounded-xl animate-float" style={{animationDelay: '2s'}}>
-                                <span className="text-2xl">🎨</span>
-                                <span className="text-sm text-theme-secondary ml-2">UI/UX</span>
+                                <span className="text-2xl">🐍</span>
+                                <span className="text-sm text-theme-secondary ml-2">Python</span>
                             </div>
                         </div>
                     </div>

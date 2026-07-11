@@ -3,15 +3,15 @@ import { FaCode, FaLaptopCode, FaUsers, FaRocket } from 'react-icons/fa';
 import { HiAcademicCap, HiBriefcase, HiLightBulb } from 'react-icons/hi';
 
 const stats = [
-    { number: '5+', label: 'Years Experience', icon: HiBriefcase },
+    { number: '8+', label: 'Years Experience', icon: HiBriefcase },
     { number: '20+', label: 'Projects Completed', icon: FaRocket },
-    { number: '6', label: 'Companies Worked', icon: FaUsers },
+    { number: '3', label: 'Companies Worked', icon: FaUsers },
     { number: '10+', label: 'Technologies', icon: FaCode },
 ];
 
 const highlights = [
     { icon: FaLaptopCode, title: 'Frontend Expert', description: 'Specialized in React, Vue.js, and modern JavaScript frameworks with focus on performance and UX.', color: 'from-primary-500 to-primary-600' },
-    { icon: HiAcademicCap, title: 'Self-Taught Developer', description: 'Started coding journey through online resources and transformed passion into professional expertise.', color: 'from-accent-cyan to-blue-500' },
+    { icon: HiAcademicCap, title: 'Software Engineer', description: 'Studied Software Engineering at University of Tehran and turned academic foundations into real-world expertise.', color: 'from-accent-cyan to-blue-500' },
     { icon: HiLightBulb, title: 'Problem Solver', description: 'Love tackling complex challenges and turning innovative ideas into elegant, scalable solutions.', color: 'from-accent-purple to-pink-500' },
 ];
 
@@ -68,20 +68,21 @@ function About() {
                             </h3>
                             <div className="space-y-3 sm:space-y-4 text-theme-secondary leading-relaxed text-sm sm:text-base">
                                 <p>
-                                    Born in April 1999, I initially pursued <span className="text-primary-500">Veterinary Medicine</span> but 
-                                    discovered my true passion lay elsewhere — in the world of <span className="text-accent-cyan">programming</span>.
+                                    Born in April 1999, I studied <span className="text-primary-500">Software Engineering</span> at 
+                                    <span className="text-accent-cyan"> University of Tehran</span>, where I built a strong foundation 
+                                    in programming and software development.
                                 </p>
                                 <p>
-                                    One day, while browsing YouTube, I stumbled upon coding tutorials that ignited a spark within me. 
-                                    I spent countless days and nights learning, and every successful line of code felt like a victory.
+                                    Alongside my studies, I spent countless days and nights coding, exploring new technologies, 
+                                    and turning every successful line of code into a step forward.
                                 </p>
                                 <p>
-                                    This journey led me through amazing opportunities — from <span className="text-accent-purple">Amirkabir University</span> projects 
-                                    to major startups in petrochemical and transportation sectors. Each experience shaped me into the 
+                                    This journey led me through amazing opportunities — from building custom CMS platforms 
+                                    to leading remote teams for international product companies. Each experience shaped me into the 
                                     developer I am today.
                                 </p>
                                 <p>
-                                    Now, with <span className="text-primary-500 font-semibold">5+ years of experience</span>, I specialize in building 
+                                    Now, with <span className="text-primary-500 font-semibold">8+ years of experience</span>, I specialize in building 
                                     modern web applications with React, Vue.js, and even Blazor for full-stack solutions.
                                 </p>
                             </div>

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa';
-import { HiMail, HiPhone, HiLocationMarker, HiHeart, HiArrowUp } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker, HiHeart, HiArrowUp, HiPaperAirplane } from 'react-icons/hi';
 import social from './FooterList';
+
+const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_ACCESS_KEY || '';
 
 const contactInfo = [
     { icon: HiMail, label: 'Email', value: social.email, href: `mailto:${social.email}`, color: 'from-primary-500 to-accent-cyan' },
@@ -15,9 +17,14 @@ const socialLinks = [
     { icon: FaTelegram, href: 'https://t.me/yourtelegram', label: 'Telegram', hoverColor: 'hover:text-white hover:bg-sky-500' },
 ];
 
+const initialForm = { name: '', email: '', subject: '', message: '' };
+
 function Footer() {
     const [isVisible, setIsVisible] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const [form, setForm] = useState(initialForm);
+    const [status, setStatus] = useState('idle');
+    const [errorMessage, setErrorMessage] = useState('');
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -47,6 +54,54 @@ function Footer() {
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setErrorMessage('');
+
+        if (!WEB3FORMS_ACCESS_KEY) {
+            setStatus('error');
+            setErrorMessage('Web3Forms access key is missing. Add REACT_APP_WEB3FORMS_ACCESS_KEY to .env');
+            return;
+        }
+
+        setStatus('loading');
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    subject: form.subject || 'New message from portfolio',
+                    from_name: 'Mahdi Portfolio',
+                    name: form.name,
+                    email: form.email,
+                    message: form.message,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || 'Failed to send message');
+            }
+
+            setStatus('success');
+            setForm(initialForm);
+        } catch (error) {
+            setStatus('error');
+            setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
+        }
     };
 
     return (
@@ -89,6 +144,102 @@ function Footer() {
                                 </div>
                             </a>
                         ))}
+                    </div>
+
+                    <div className={`max-w-2xl mx-auto mb-10 sm:mb-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <form onSubmit={handleSubmit} className="glass rounded-xl sm:rounded-2xl p-5 sm:p-8 space-y-4 sm:space-y-5">
+                            <input
+                                type="checkbox"
+                                name="botcheck"
+                                className="hidden"
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+
+                            <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+                                <div>
+                                    <label htmlFor="name" className="block text-xs sm:text-sm text-theme-muted mb-1.5 sm:mb-2">
+                                        Name
+                                    </label>
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        required
+                                        value={form.name}
+                                        onChange={handleChange}
+                                        placeholder="Your name"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-theme-primary placeholder:text-theme-muted text-sm sm:text-base focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/30 transition-colors"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="email" className="block text-xs sm:text-sm text-theme-muted mb-1.5 sm:mb-2">
+                                        Email
+                                    </label>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        required
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        placeholder="you@example.com"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-theme-primary placeholder:text-theme-muted text-sm sm:text-base focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/30 transition-colors"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label htmlFor="subject" className="block text-xs sm:text-sm text-theme-muted mb-1.5 sm:mb-2">
+                                    Subject
+                                </label>
+                                <input
+                                    id="subject"
+                                    name="subject"
+                                    type="text"
+                                    value={form.subject}
+                                    onChange={handleChange}
+                                    placeholder="Project inquiry"
+                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-theme-primary placeholder:text-theme-muted text-sm sm:text-base focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/30 transition-colors"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="message" className="block text-xs sm:text-sm text-theme-muted mb-1.5 sm:mb-2">
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    required
+                                    rows={5}
+                                    value={form.message}
+                                    onChange={handleChange}
+                                    placeholder="Tell me about your project..."
+                                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-theme-primary placeholder:text-theme-muted text-sm sm:text-base focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/30 transition-colors resize-y min-h-[120px]"
+                                />
+                            </div>
+
+                            {status === 'success' && (
+                                <p className="text-sm text-primary-500 bg-primary-500/10 border border-primary-500/20 rounded-lg px-3 py-2">
+                                    Message sent successfully. I&apos;ll get back to you soon.
+                                </p>
+                            )}
+                            {status === 'error' && (
+                                <p className="text-sm text-red-500 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+                                    {errorMessage}
+                                </p>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={status === 'loading'}
+                                className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                            >
+                                <HiPaperAirplane className="text-lg rotate-90" />
+                                {status === 'loading' ? 'Sending...' : 'Send Message'}
+                            </button>
+                        </form>
                     </div>
 
                     <div className={`flex justify-center gap-3 sm:gap-4 mb-10 sm:mb-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

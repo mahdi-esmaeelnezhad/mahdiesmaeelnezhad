@@ -5,6 +5,8 @@ const categories = [
     { name: 'All', filter: 'all' },
     { name: 'Frontend', filter: 'frontend' },
     { name: 'Backend', filter: 'backend' },
+    { name: 'Languages', filter: 'languages' },
+    { name: 'Data & APIs', filter: 'data' },
     { name: 'Tools', filter: 'tools' },
 ];
 
@@ -121,7 +123,7 @@ function Skills() {
                 <div className={`mt-10 sm:mt-16 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                     <p className="text-theme-secondary max-w-2xl mx-auto text-sm sm:text-base px-2 sm:px-0">
                         I'm always eager to learn new technologies and stay updated with the latest trends in web development.
-                        Currently exploring <span className="text-accent-cyan">Next.js 14</span> and <span className="text-accent-purple">Server Components</span>.
+                                Currently exploring <span className="text-accent-cyan">Go</span>, <span className="text-accent-purple">Flutter</span>, and modern fullstack architectures.
                     </p>
                 </div>
             </div>
