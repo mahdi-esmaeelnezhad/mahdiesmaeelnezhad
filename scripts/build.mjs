@@ -76,4 +76,5 @@ if (!fs.existsSync(distDir)) {
   throw new Error(`[build] expected output directory missing: ${distDir}`)
 }
 console.log('[build] dist contents:', fs.readdirSync(distDir).join(', '))
+
 console.log('[build] done')
