@@ -63,7 +63,7 @@ await build({
   root: projectRoot,
   plugins: [react()],
   build: {
-    outDir: path.join(projectRoot, 'dist'),
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: indexHtmlPath,
@@ -71,4 +71,9 @@ await build({
   },
 })
 
+const distDir = path.join(projectRoot, 'dist')
+if (!fs.existsSync(distDir)) {
+  throw new Error(`[build] expected output directory missing: ${distDir}`)
+}
+console.log('[build] dist contents:', fs.readdirSync(distDir).join(', '))
 console.log('[build] done')
