@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "npx vite build",
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc -b --pretty",
     "lint": "oxlint",
     "preview": "vite preview"
