@@ -1,10 +1,10 @@
 export const LINKS = {
   email: 'mahdiesmaeelnezhad7@gmail.com',
-  phone: '+98 912 638 1582',
-  phoneHref: 'tel:+989126381582',
+  phone: '+44 7351 872527',
+  phoneHref: 'tel:+447351872527',
   github: 'https://github.com/mahdi-esmaeelnezhad',
   linkedin: 'https://www.linkedin.com/in/mahdi-esmaeilnezhad-173982207',
-  portfolio: 'https://mahdi-esmaeelnezhad.vercel.app/',
+  portfolio: 'https://mahdiesmaeelnezhad.vercel.app/',
   cv: '/Mahdi_Esmaeelnezhad_CV.pdf',
   orbit: 'https://github.com/mahdi-esmaeelnezhad/orbit-task-platform',
   smartTable: 'https://github.com/mahdi-esmaeelnezhad/ngx-smart-table-pro',
