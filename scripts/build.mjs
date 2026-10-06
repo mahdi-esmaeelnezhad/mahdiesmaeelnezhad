@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { build } from 'vite'
-import react from '@vitejs/plugin-react'
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const indexHtmlPath = path.join(projectRoot, 'index.html')
@@ -16,7 +15,7 @@ const INDEX_HTML = `<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Mahdi Esmaeelnezhad — Frontend / Full-Stack Developer. React, Vue.js, TypeScript, Node.js, Blazor. Based in Mashhad, Iran."
+      content="Mahdi Esmaeelnezhad — Frontend / Full-Stack Developer. React, Vue.js, TypeScript, Node.js, Blazor. Based in Istanbul, Turkey."
     />
     <meta property="og:title" content="Mahdi Esmaeelnezhad — Frontend / Full-Stack Developer" />
     <meta
@@ -59,16 +58,8 @@ if (!fs.existsSync(path.join(projectRoot, 'src/main.tsx'))) {
 }
 
 await build({
-  configFile: false,
+  configFile: path.join(projectRoot, 'vite.config.mjs'),
   root: projectRoot,
-  plugins: [react()],
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: indexHtmlPath,
-    },
-  },
 })
 
 const distDir = path.join(projectRoot, 'dist')
@@ -77,4 +68,29 @@ if (!fs.existsSync(distDir)) {
 }
 console.log('[build] dist contents:', fs.readdirSync(distDir).join(', '))
 
+// The production Vercel project has failed with
+// "No Output Directory named dist found" even after Vite wrote dist.
+// Emit the Build Output API, and also mirror into build/ (the previous
+// Create React App output directory), so either project setting can publish.
+const buildDir = path.join(projectRoot, 'build')
+fs.rmSync(buildDir, { recursive: true, force: true })
+fs.cpSync(distDir, buildDir, { recursive: true })
+
+const outputRoot = path.join(projectRoot, '.vercel', 'output')
+const staticDir = path.join(outputRoot, 'static')
+fs.rmSync(outputRoot, { recursive: true, force: true })
+fs.mkdirSync(staticDir, { recursive: true })
+fs.cpSync(distDir, staticDir, { recursive: true })
+fs.writeFileSync(
+  path.join(outputRoot, 'config.json'),
+  JSON.stringify({
+    version: 3,
+    routes: [
+      { handle: 'filesystem' },
+      { src: '/(.*)', dest: '/index.html' },
+    ],
+  }),
+)
+
+console.log('[build] mirrored dist to build/ and .vercel/output/static')
 console.log('[build] done')

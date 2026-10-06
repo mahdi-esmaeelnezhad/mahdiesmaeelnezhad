@@ -146,7 +146,7 @@ const en: Dict = {
   },
   hero: {
     badge: 'Frontend & Full-Stack Developer',
-    location: 'Mashhad, Iran',
+    location: 'Istanbul, Turkey',
     greeting: "Hi, I'm",
     role: 'Frontend / Full-Stack Developer',
     tagline:
@@ -174,7 +174,7 @@ const en: Dict = {
       { icon: '🚀', title: '5+ Years', desc: 'Building production web applications end to end' },
       { icon: '⚛️', title: 'Frontend Lead', desc: 'Leading component patterns and state management' },
       { icon: '🔗', title: 'Full-Stack', desc: 'React frontends connected to Node.js and Blazor backends' },
-      { icon: '🌍', title: 'Mashhad, Iran', desc: 'Persian native · English professional working level' },
+      { icon: '🌍', title: 'Istanbul, Turkey', desc: 'Persian native · English professional working level' },
     ],
     lookingForTitle: 'What I bring',
     lookingFor:
@@ -354,11 +354,11 @@ const en: Dict = {
     title: 'Get In Touch',
     subtitle: "Let's build something great together",
     intro:
-      "Whether you have a project, a role, or just want to connect — my inbox is always open. Based in Mashhad and happy to collaborate remotely.",
+      "Whether you have a project, a role, or just want to connect — my inbox is always open. Based in Istanbul and happy to collaborate remotely.",
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     locationLabel: 'Location',
-    locationValue: 'Mashhad, Iran',
+    locationValue: 'Istanbul, Turkey',
     form: {
       name: 'Your name',
       email: 'Your email',
@@ -384,7 +384,7 @@ const en: Dict = {
     clock: '11:47 PM',
     deskTitle: 'A quiet room. One more deploy.',
     deskCaption:
-      'Frontend / full-stack developer. Mashhad, Iran. The monitor is still on.',
+      'Frontend / full-stack developer. Istanbul, Turkey. The monitor is still on.',
     ideTitle: 'Keep scrolling. The editor becomes the product.',
     buildCmd: 'pnpm build && deploy --prod',
     building: 'Building…',
@@ -402,7 +402,7 @@ const en: Dict = {
       { who: 'Sara', text: 'Found an edge case on checkout.' },
       { who: 'Mahdi', text: "Let's pair on it." },
     ],
-    globeCaption: 'Mashhad, Iran.',
+    globeCaption: 'Istanbul, Turkey.',
     termWho: 'whoami',
     termSkills: 'cat skills.txt',
     termOpen: 'open contact',

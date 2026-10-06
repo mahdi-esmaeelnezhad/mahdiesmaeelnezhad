@@ -9,7 +9,7 @@ export default defineConfig({
   root: projectRoot,
   plugins: [react()],
   build: {
-    outDir: path.resolve(projectRoot, 'dist'),
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: path.resolve(projectRoot, 'index.html'),

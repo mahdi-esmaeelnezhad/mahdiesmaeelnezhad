@@ -30,7 +30,7 @@ export function Hero() {
                 <span className="dot" />
                 {t.hero.badge}
               </span>
-              <span className="hero-badge">🇮🇷 {t.hero.location}</span>
+              <span className="hero-badge">🇹🇷 {t.hero.location}</span>
             </div>
 
             <div className="hero-cta">
